@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LaunchPad | Advanced CSS3 Showcase</title>
+
+    <!-- Internal CSS: all seven CSS3 features are demonstrated below -->
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #e0f2fe 0%, #f0fdf4 100%);
+            color: #1e293b;
+            margin: 0;
+            padding: 20px;
+        }
+        .container { max-width: 900px; margin: auto; }
+        h1 { color: #0284c7; text-align: center; margin: 0; }
+        .tagline { text-align: center; color: #059669; font-weight: 600; }
+        h2 { color: #059669; border-bottom: 2px solid #e2e8f0; padding-bottom: 6px; }
+        section { background: #ffffff; padding: 20px 24px; margin-top: 22px; border-radius: 12px;
+                  border: 1px solid #bae6fd; }
+        code { background: #ecfdf5; padding: 1px 6px; border-radius: 4px; color: #047857; }
+
+        /* ===== 1. ROUNDED CORNERS: border-radius ===== */
+        .rounded-row { display: flex; flex-wrap: wrap; gap: 16px; }
+        .rounded-box {
+            width: 250px;
+            padding: 15px;
+            background-color: #cde9f6;
+            border: 2px solid #2b7a9e;
+            border-radius: 15px 50px 30px 5px;   /* TL TR BR BL */
+        }
+        .rounded-all {
+            width: 250px;
+            padding: 15px;
+            background-color: #d1fae5;
+            border: 2px solid #059669;
+            border-radius: 25px;                 /* same on all corners */
+        }
+
+        /* ===== 2. BORDER IMAGE ===== */
+        .border-img-box {
+            width: 300px;
+            padding: 20px;
+            border: 25px solid transparent;
+            border-image: url(border.png) 30 round;
+        }
+
+        /* ===== 3. MULTIPLE BACKGROUNDS ===== */
+        #example1 {
+            width: 100%;
+            max-width: 560px;
+            height: 200px;
+            background-image: url(img_rocket.png), url(paper.png);
+            background-position: right bottom, left top;
+            background-repeat: no-repeat, repeat;
+            border: 2px solid #0284c7;
+            border-radius: 10px;
+            padding: 12px;
+            box-sizing: border-box;
+        }
+
+        /* ===== 4. BACKGROUND SIZE ===== */
+        .bg-row { display: flex; flex-wrap: wrap; gap: 16px; }
+        .bg-demo {
+            width: 260px; height: 150px;
+            border: 2px solid #0f172a;
+            background-image: url(img_hero.jpg);
+            background-repeat: no-repeat;
+            background-position: center;
+            color: #fff; font-weight: bold; padding: 6px;
+            box-sizing: border-box;
+        }
+        #div-fixed   { background-size: 100px 80px; background-color: #fff; color: #0f172a; }
+        #div-cover   { background-size: cover; }
+        #div-contain { background-size: contain; background-color: #fff; color: #0f172a; }
+
+        /* ===== 5. PSEUDO-CLASSES ===== */
+        form label { display: block; margin-top: 12px; font-weight: 600; }
+        form input { padding: 10px; width: 100%; max-width: 360px; border-radius: 6px; box-sizing: border-box; font-size: 1rem; }
+        input:required {                         /* required fields */
+            border: 3px solid blue;
+            background-color: lightyellow;
+        }
+        input:focus {                            /* field with keyboard focus */
+            border: 3px solid red;
+            background-color: #e9ffe9;
+            outline: none;
+        }
+        input[type="email"]:invalid { color: red; }    /* badly formed e-mail */
+        input[type="email"]:valid   { color: blue; }   /* correctly formed e-mail */
+
+        /* ===== 6. ADJACENT SIBLING SELECTOR (A + B) ===== */
+        table { border-collapse: collapse; width: 100%; max-width: 560px; }
+        td, th { padding: 10px 14px; border: 1px solid #cbd5e1; text-align: left; }
+        th { background: #059669; color: #fff; }
+        .itemImg { opacity: 0.2; transition: opacity 0.3s ease; }
+        .itemName:hover + .itemImg { opacity: 1; }
+        .itemName { cursor: pointer; font-weight: 600; }
+
+        /* ===== 7. nth-child() ===== */
+        #stripedTable tr:nth-child(odd)  { background-color: #f2f2f2; }
+        #stripedTable tr:nth-child(even) { background-color: #dbeeff; }
+        #stripedTable tr:hover           { background-color: #ffd966; }
+
+        footer { text-align: center; color: #64748b; margin: 24px 0; }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <header>
+        <h1>🚀 LaunchPad &mdash; Advanced CSS3 Showcase</h1>
+        <p class="tagline">Rounded corners, border images, layered backgrounds and smart selectors for startup landing pages</p>
+    </header>
+
+    <!-- 1. Rounded corners -->
+    <section>
+        <h2>1. Rounded Corners</h2>
+        <div class="rounded-row">
+            <div class="rounded-box">
+                <strong>Pitch Card</strong><br>
+                <code>border-radius: 15px 50px 30px 5px;</code>
+            </div>
+            <div class="rounded-all">
+                <strong>Pill Card</strong><br>
+                <code>border-radius: 25px;</code>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Border image -->
+    <section>
+        <h2>2. Border Image</h2>
+        <div class="border-img-box">
+            <strong>Founder Certificate</strong>
+            <p>This box uses <code>border-image: url(border.png) 30 round;</code> instead of a plain border.</p>
+        </div>
+    </section>
+
+    <!-- 3. Multiple backgrounds -->
+    <section>
+        <h2>3. Multiple Backgrounds</h2>
+        <div id="example1">
+            <strong>Ready for lift-off!</strong><br>
+            A rocket (no-repeat, bottom right) sits on a tiled paper texture.
+        </div>
+    </section>
+
+    <!-- 4. Background size -->
+    <section>
+        <h2>4. Background Size</h2>
+        <div class="bg-row">
+            <div class="bg-demo" id="div-fixed">100px 80px</div>
+            <div class="bg-demo" id="div-cover">cover</div>
+            <div class="bg-demo" id="div-contain">contain</div>
+        </div>
+    </section>
+
+    <!-- 5. Pseudo-classes -->
+    <section>
+        <h2>5. Pseudo-Classes: :focus, :required, :valid, :invalid</h2>
+        <form>
+            <label for="fname">Founder Name (required):</label>
+            <input type="text" id="fname" placeholder="Enter your name" required>
+
+            <label for="femail">Work Email (turns blue when valid, red when invalid):</label>
+            <input type="email" id="femail" placeholder="name@example.com" required value="founder@">
+        </form>
+    </section>
+
+    <!-- 6. Adjacent sibling selector -->
+    <section>
+        <h2>6. Adjacent Sibling Selector (+)</h2>
+        <p>Hover over a plan name to reveal the image beside it.</p>
+        <table>
+            <tr><th>Plan</th><th>Preview</th></tr>
+            <tr><td class="itemName">Bootstrap</td><td class="itemImg"><img src="item1.jpg" width="60" alt="Bootstrap plan"></td></tr>
+            <tr><td class="itemName">Pro Growth</td><td class="itemImg"><img src="item2.jpg" width="60" alt="Pro Growth plan"></td></tr>
+            <tr><td class="itemName">Scaleup</td><td class="itemImg"><img src="item3.jpg" width="60" alt="Scaleup plan"></td></tr>
+        </table>
+    </section>
+
+    <!-- 7. nth-child -->
+    <section>
+        <h2>7. nth-child(): Striped Table</h2>
+        <table id="stripedTable">
+            <tr><td>Row 1: Market Validation</td></tr>
+            <tr><td>Row 2: MVP Development</td></tr>
+            <tr><td>Row 3: Beta Launch</td></tr>
+            <tr><td>Row 4: Seed Funding</td></tr>
+            <tr><td>Row 5: Scale Up</td></tr>
+        </table>
+    </section>
+
+    <footer>&copy; 2026 LaunchPad Startup Hub</footer>
+</div>
+</body>
+</html>
